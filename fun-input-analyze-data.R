@@ -84,7 +84,7 @@ analyze_expression_data <- function(alldata, analysis_method = "edgeR", numgenei
          message = "You have no columns with characters, check that you have a least one column of gene ids
          as the first column in your file."))
   tmpgenecols = 1:numgeneids
-  tmpexprcols = setdiff(1:ncol(alldata),tmpgenecols)
+  tmpexprcols = setdiff(seq_len(ncol(alldata)),tmpgenecols)
   
   validate(
     need(length(tmpexprcols)>0,

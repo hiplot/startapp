@@ -177,7 +177,7 @@ filterDataReactive <- reactive({
   if(!(input$datafilter_groups[1]=="")) {
     tmpselected = input$datafilter_groups
     tmprem = match(as.character(tmpsampledata$sampleid[which(!(tmpsampledata$group%in%tmpselected))]),colnames(mydata))
-    tmpkeep = setdiff(1:ncol(mydata),tmprem)
+    tmpkeep = setdiff(seq_len(ncol(mydata)),tmprem)
     mydata = mydata[,tmpkeep]
   }
   
@@ -186,7 +186,7 @@ filterDataReactive <- reactive({
     tmpselected = input$datafilter_samples
     tmpsamplesrem = setdiff(as.character(tmpsampledata$sampleid),tmpselected) # leftover samples
     tmprem = match(tmpsamplesrem,colnames(mydata))
-    tmpkeep = setdiff(1:ncol(mydata),tmprem)
+    tmpkeep = setdiff(seq_len(ncol(mydata)),tmprem)
     mydata = mydata[,tmpkeep]
   }
   
